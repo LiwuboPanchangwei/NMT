@@ -13,17 +13,19 @@ decode_size=100
 embedding_size=100
 num_iter=100
 
+mkdir data
+mkdir data/train
+mkdir data/val
+
 ##parse val dataset
 #python prep_data.py $ori_val_en > ${val}"val.en"
 #python prep_data.py $ori_val_zh > ${val}"val.zh"
 
 ##process data and generate en_dic, zh_dic, dataset and dataset config information
-#python process_data.py $val 'true' > ./data/zh_statistics/zh_dic.val
-#python process_data.py $train 'true' > ./data/zh_statistics/zh_dic.train
-#python process_data.py $train 'true'
+python process_data.py $train 'true'
 
 ##vectorize dataset(batch) and generate mask(batch) 
 #python gen_dataset.py $train $batch_size
 
 ##train model
-python train.py
+#python train.py
